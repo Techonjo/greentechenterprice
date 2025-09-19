@@ -130,14 +130,14 @@ body.dark-theme .theme-toggle:hover {
 .splash-progress-bar {
   height: 100%;
   width: 0%;
-  background-color: var(--primary-light);
+  background-color: rgb(15, 189, 15);
   transition: width 0.3s ease;
 }
 
 .skip-splash {
   padding: 0.5rem 1.5rem;
   background-color: transparent;
-  border: 2px solid white;
+  border: px solid white;
   color: white;
   border-radius: 4px;
   cursor: pointer;
