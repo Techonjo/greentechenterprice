@@ -137,8 +137,8 @@ body.dark-theme .theme-toggle:hover {
 .skip-splash {
   padding: 0.5rem 1.5rem;
   background-color: transparent;
-  border: 1px solid white;
-  color: var(--accent);
+  border: 2px solid white;
+  color: white;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
