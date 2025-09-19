@@ -110,12 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          observer.unobserve(entry.target); // Unobserve after animating
+          observer.unobserve(entry.target); // 
         }
       });
     },
     {
-      threshold: 0.2, // Trigger when 20% of the element is visible
+      threshold: 0.2, // 
     }
   );
 
@@ -129,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // Remove active class from all buttons and add to the clicked one
       filterButtons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
 
@@ -137,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       projectCards.forEach((card) => {
         const category = card.getAttribute("data-category");
-        // Hide/show cards based on the filter
         if (filterValue === "all" || category === filterValue) {
           card.style.display = "block";
         } else {
@@ -165,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (newsletterForm) {
     newsletterForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      // In a real application, you'd send this to a server
       showToast("Thank you for subscribing!");
       newsletterForm.reset();
     });
@@ -174,7 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      // In a real application, you'd send this to a server
       showToast("Message sent! We'll be in touch.");
       contactForm.reset();
     });
