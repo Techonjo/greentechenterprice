@@ -108,6 +108,10 @@ body.dark-theme .theme-toggle:hover {
   align-items: center;
   z-index: 9999;
   transition: opacity 0.5s ease;
+  padding: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .splash-logo {
@@ -1098,6 +1102,33 @@ footer {
 }
 
 /* Responsive */
+/* Responsive Splash Screen */
+@media (max-width: 768px) {
+  .splash-logo {
+    font-size: 1.6rem; /* Smaller text for tablets */
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .splash-progress {
+    width: 150px; /* Adjust progress bar */
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-logo {
+    font-size: 1.2rem; /* Even smaller for phones */
+    padding: 0 1rem;
+  }
+
+  .splash-progress {
+    width: 120px; /* Narrow progress bar */
+    height: 3px;
+    margin-bottom: 1rem;
+  }
+}
+
 @media (max-width: 992px) {
   .hero {
     flex-direction: column;
