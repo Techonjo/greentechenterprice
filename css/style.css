@@ -703,7 +703,9 @@ section {
   background-color: #ffffff;
   padding: 0.5rem;
   border-radius: 20px;
- ;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .partner-logo {
@@ -864,7 +866,11 @@ textarea.form-control {
 
 /* Footer */
 footer {
-  background: linear-gradient(to right, #003332, #078f3e); /* Fixed dark background */
+  background: linear-gradient(
+    to right,
+    #003332,
+    #078f3e
+  ); /* Fixed dark background */
   color: white; /* Fixed light text color */
   padding: 3rem 2rem 1.5rem;
   transition: background-color 0.3s ease;
