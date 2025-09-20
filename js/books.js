@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const previewModal = document.getElementById("preview-modal");
   const closeModalBtn = document.getElementById("close-modal");
-  const buyToast = document.getElementById("buy-toast");
+  
 
   // --- Modal and Toast Handlers ---
   document.querySelectorAll(".preview-btn").forEach((btn) => {
@@ -25,15 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document.querySelectorAll(".buy-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      buyToast.classList.add("is-visible");
-      setTimeout(() => {
-        buyToast.classList.remove("is-visible");
-      }, 3000);
-    });
-  });
 
   // --- Filter and Search Logic ---
   const searchInput = document.getElementById("searchInput");

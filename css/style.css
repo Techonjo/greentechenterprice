@@ -272,7 +272,7 @@ nav ul li a:hover::after {
 }
 
 .hero-content p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-light);
   margin-bottom: 2rem;
 }
