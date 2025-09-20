@@ -24,7 +24,7 @@ body {
 header {
   text-align: center;
   padding: 3rem 1rem;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+ background: linear-gradient(to right, #003332, #078f3e);
   color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative; /* Needed for positioning the back button */
