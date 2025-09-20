@@ -83,3 +83,50 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize view with all books visible
   filterAndSearch();
 });
+
+/* --- Formspree Logic --- */
+  const newsletterForm = document.querySelector(".newsletter-form");
+  const toast = document.getElementById("toast");
+
+  function showToast(message) {
+    if (toast) {
+      toast.querySelector("span:last-child").textContent = message;
+      toast.classList.add("active");
+      setTimeout(() => {
+        toast.classList.remove("active");
+      }, 3000);
+    }
+  }
+
+  // ✅ Newsletter form with JSON (AJAX)
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(newsletterForm);
+      const data = Object.fromEntries(formData.entries()); // convert to JSON
+
+      try {
+        const response = await fetch("https://formspree.io/f/mwpngjkg", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          showToast("Thank you for subscribing!");
+          newsletterForm.reset();
+        } else {
+          const errorData = await response.json();
+          console.error("Newsletter error:", errorData);
+          showToast("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        showToast("Network error. Please try later.");
+      }
+    });
+  }
