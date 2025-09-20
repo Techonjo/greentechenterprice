@@ -25,16 +25,13 @@ function startLoading() {
       clearInterval(interval);
       setTimeout(() => {
         splash.style.opacity = "0";
-        setTimeout(() => (splash.style.display = "none"), 500);
+        setTimeout(() => (splash.style.display = "none"), 3000);
       }, 300);
     }
   }, 20);
 }
 
-skipSplash.addEventListener("click", () => {
-  splash.style.opacity = "0";
-  setTimeout(() => (splash.style.display = "none"), 500);
-});
+
 
 // Header Scroll Effect & Mobile Nav
 const header = document.getElementById("header");
