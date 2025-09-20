@@ -52,6 +52,7 @@ h4 {
 a {
   text-decoration: none;
   color: inherit;
+  font-size: 15px;
 }
 
 /* Floating Theme Toggle Button */
