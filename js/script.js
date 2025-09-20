@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggleBtn = document.getElementById("theme-toggle");
   const body = document.body;
 
-  // Check for a saved theme preference
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme) {
     body.classList.add(savedTheme);
@@ -102,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* --- Scroll Animation Logic (Observer API) --- */
+  /* --- Scroll Animation Logic --- */
   const revealElements = document.querySelectorAll(".reveal");
 
   const observer = new IntersectionObserver(
@@ -160,15 +159,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Reusable function to handle Formspree submissions
-  async function handleFormSubmit(form, formspreeID, successMsg) {
-    form.addEventListener("submit", async (e) => {
+  // ✅ Newsletter form with JSON (AJAX)
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const formData = new FormData(form);
+      const formData = new FormData(newsletterForm);
+      const data = Object.fromEntries(formData.entries()); // convert to JSON
 
       try {
-        const response = await fetch(`https://formspree.io/f/${formspreeID}`, {
+        const response = await fetch("https://formspree.io/f/mwpngjkg", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          showToast("Thank you for subscribing!");
+          newsletterForm.reset();
+        } else {
+          const errorData = await response.json();
+          console.error("Newsletter error:", errorData);
+          showToast("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        showToast("Network error. Please try later.");
+      }
+    });
+  }
+
+  // ✅ Contact form (still works with Formspree)
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch("https://formspree.io/f/mgvlgqgd", {
           method: "POST",
           body: formData,
           headers: {
@@ -177,32 +209,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (response.ok) {
-          showToast(successMsg);
-          form.reset();
+          showToast("Your message has been sent!");
+          contactForm.reset();
         } else {
+          const errorData = await response.json();
+          console.error("Contact form error:", errorData);
           showToast("Something went wrong. Please try again.");
         }
       } catch (error) {
+        console.error("Network error:", error);
         showToast("Network error. Please try later.");
       }
     });
-  }
-
-  // Attach newsletter form
-  if (newsletterForm) {
-    handleFormSubmit(
-      newsletterForm,
-      "mwpngjkg", 
-      "Thank you for subscribing!"
-    );
-  }
-
-  // Attach contact form
-  if (contactForm) {
-    handleFormSubmit(
-      contactForm,
-      "mgvlgqgd", 
-      "Your message has been sent!"
-    );
   }
 });
