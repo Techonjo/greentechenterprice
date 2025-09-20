@@ -1233,3 +1233,32 @@ footer {
     right: 1rem;
   }
 }
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #0f8b4f; 
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background: #0b3a2a;
+  transform: translateY(-3px);
+}
+#backToTop.show {
+  display: flex; /* show when scrolled down */
+}

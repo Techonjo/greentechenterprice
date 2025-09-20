@@ -223,3 +223,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Back to Top Button
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.style.display = "flex"; // show button
+  } else {
+    backToTop.style.display = "none"; // hide button
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+

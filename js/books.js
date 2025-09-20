@@ -129,4 +129,19 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast("Network error. Please try later.");
       }
     });
+}
+  
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.style.display = "flex"; // show button
+  } else {
+    backToTop.style.display = "none"; // hide button
   }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});

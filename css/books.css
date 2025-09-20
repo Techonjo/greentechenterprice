@@ -27,7 +27,7 @@ header {
   background: linear-gradient(to right, #003332, #078f3e);
   color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: relative; /* Needed for positioning the back button */
+  position: relative;
 }
 
 .back-btn {
@@ -99,7 +99,7 @@ h1 {
     margin-bottom: 2rem;
   }
   .author-card {
-    order: 3; /* Puts the author card at the bottom on tablet/mobile */
+    order: 3; 
   }
 }
 
@@ -257,7 +257,7 @@ h1 {
   font-size: 0.9rem;
   color: var(--text-light);
   margin-bottom: 1rem;
-  flex-grow: 1; /* Pushes buttons to the bottom */
+  flex-grow: 1; 
 }
 
 .book-meta {
@@ -451,14 +451,20 @@ h1 {
   }
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 15px;
+}
+
 /* Footer */
 footer {
   background: linear-gradient(
     to right,
     #003332,
     #078f3e
-  ); /* Fixed dark background */
-  color: white; /* Fixed light text color */
+  ); 
+  color: white; 
   padding: 3rem 2rem 1.5rem;
   transition: background-color 0.3s ease;
 }
@@ -610,4 +616,34 @@ footer {
 
 .footer-legal a:hover {
   color: white;
+}
+
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #0f8b4f; 
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background: #0b3a2a;
+  transform: translateY(-3px);
+}
+#backToTop.show {
+  display: flex; 
 }
