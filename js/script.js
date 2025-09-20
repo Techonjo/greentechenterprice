@@ -25,13 +25,16 @@ function startLoading() {
       clearInterval(interval);
       setTimeout(() => {
         splash.style.opacity = "0";
-        setTimeout(() => (splash.style.display = "none"), 3000);
+        setTimeout(() => (splash.style.display = "none"), 500);
       }, 300);
     }
   }, 20);
 }
 
-
+skipSplash.addEventListener("click", () => {
+  splash.style.opacity = "0";
+  setTimeout(() => (splash.style.display = "none"), 500);
+});
 
 // Header Scroll Effect & Mobile Nav
 const header = document.getElementById("header");
@@ -113,11 +116,11 @@ revealElements.forEach((element) => {
   observer.observe(element);
 });
 
-// Initial load logic
-window.addEventListener("DOMContentLoaded", () => {
-  startLoading();
+// This function call is now placed at the start of the script.
+startLoading();
 
-  // Find the "All" filter button and click it to initialize the project display
+// This listener remains for other DOM-related tasks.
+window.addEventListener("DOMContentLoaded", () => {
   const allButton = document.querySelector('.filter-btn[data-filter="all"]');
   if (allButton) {
     allButton.click();
