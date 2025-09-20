@@ -144,35 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-
-  /* --- Form Submission & Toast Logic --- */
-  const newsletterForm = document.querySelector(".newsletter-form");
-  const contactForm = document.querySelector(".contact-form form");
-  const toast = document.getElementById("toast");
-
-  function showToast(message) {
-    if (toast) {
-      toast.querySelector("span:last-child").textContent = message;
-      toast.classList.add("active");
-      setTimeout(() => {
-        toast.classList.remove("active");
-      }, 3000);
-    }
-  }
-
-  if (newsletterForm) {
-    newsletterForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      showToast("Thank you for subscribing!");
-      newsletterForm.reset();
-    });
-  }
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      showToast("Message sent! We'll be in touch.");
-      contactForm.reset();
-    });
-  }
 });
+
+  
