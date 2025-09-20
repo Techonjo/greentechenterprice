@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (newsletterForm) {
     handleFormSubmit(
       newsletterForm,
-      "mwpngjkg", // 👈 only the ID
+      "mwpngjkg", 
       "Thank you for subscribing!"
     );
   }
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     handleFormSubmit(
       contactForm,
-      "mgvlgqgd", // 👈 only the ID
+      "mgvlgqgd", 
       "Your message has been sent!"
     );
   }
