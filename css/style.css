@@ -698,6 +698,13 @@ section {
   justify-content: center; /* This centers the items horizontally */
 }
 
+.background {
+  background-color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 20px;
+ ;
+}
+
 .partner-logo {
   width: 150px;
   height: auto;
