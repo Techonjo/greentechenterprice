@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("header");
   const hamburger = document.getElementById("hamburger");
   const nav = document.getElementById("nav");
-  const navLinks = nav.querySelectorAll("a");
+  const navLinks = nav ? nav.querySelectorAll("a") : [];
 
   window.addEventListener("scroll", () => {
     if (header) {
@@ -110,12 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          observer.unobserve(entry.target); // 
+          observer.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.2, // 
+      threshold: 0.2,
     }
   );
 
@@ -144,6 +144,65 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-});
 
-  
+  /* --- Formspree Logic --- */
+  const newsletterForm = document.querySelector(".newsletter-form");
+  const contactForm = document.querySelector(".contact-form form");
+  const toast = document.getElementById("toast");
+
+  function showToast(message) {
+    if (toast) {
+      toast.querySelector("span:last-child").textContent = message;
+      toast.classList.add("active");
+      setTimeout(() => {
+        toast.classList.remove("active");
+      }, 3000);
+    }
+  }
+
+  // Reusable function to handle Formspree submissions
+  async function handleFormSubmit(form, formspreeID, successMsg) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(`https://formspree.io/f/${formspreeID}`, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          showToast(successMsg);
+          form.reset();
+        } else {
+          showToast("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        showToast("Network error. Please try later.");
+      }
+    });
+  }
+
+  // Attach newsletter form
+  if (newsletterForm) {
+    handleFormSubmit(
+      newsletterForm,
+      "mwpngjkg", // 👈 only the ID
+      "Thank you for subscribing!"
+    );
+  }
+
+  // Attach contact form
+  if (contactForm) {
+    handleFormSubmit(
+      contactForm,
+      "mgvlgqgd", // 👈 only the ID
+      "Your message has been sent!"
+    );
+  }
+});
