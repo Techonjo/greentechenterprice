@@ -235,10 +235,13 @@ window.addEventListener("scroll", () => {
   }
 });
 
+function goToBookPage() {
+  window.location.href = "books.html";
+}
+
 backToTop.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 });
-
