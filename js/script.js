@@ -122,6 +122,46 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
+  // TEAM SECTION REVEAL
+  const teamCards = document.querySelectorAll(".team-card");
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  teamCards.forEach((card) => obs.observe(card));
+
+  // TEAM CAROUSEL
+  const teamGrid = document.getElementById("teamGrid");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (teamGrid && nextBtn && prevBtn) {
+    nextBtn.addEventListener("click", () => {
+      const firstCard = teamCards[0];
+      if (firstCard) {
+        const cardWidthWithGap =
+          firstCard.offsetWidth + parseFloat(getComputedStyle(teamGrid).gap);
+        teamGrid.scrollBy({ left: cardWidthWithGap, behavior: "smooth" });
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      const firstCard = teamCards[0];
+      if (firstCard) {
+        const cardWidthWithGap =
+          firstCard.offsetWidth + parseFloat(getComputedStyle(teamGrid).gap);
+        teamGrid.scrollBy({ left: -cardWidthWithGap, behavior: "smooth" });
+      }
+    });
+  }
+
   /* --- Project Filter Logic --- */
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
@@ -245,3 +285,4 @@ backToTop.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
